@@ -17,5 +17,5 @@ jobs:
     - name: Gradle Build Action #ref from marketplace -> gradle build action
       uses: gradle/gradle-build-action@v2.3.3
     - name: Gradle Test
-      run: gradle test
+      run: ./gradlew test
     
