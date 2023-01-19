@@ -1,5 +1,6 @@
 package edu.swcoaching.skkumarket.member.dto;
 
+import edu.swcoaching.skkumarket.member.entity.Member;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -24,12 +25,13 @@ public class MemberDto {
 
     @Getter
     @AllArgsConstructor
-    public static class Patch{
+    public static class Put{
         @Setter
         private long id;
         private String username;
         private String email;
         private String password;
+        private Member.Status status;
     }
 
     @Getter
@@ -38,6 +40,7 @@ public class MemberDto {
         private long id;
         private String username;
         private String email;
+        private Member.Status status;
 
     }
 }

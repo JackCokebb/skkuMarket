@@ -4,6 +4,8 @@ import edu.swcoaching.skkumarket.member.entity.Member;
 import edu.swcoaching.skkumarket.member.repository.MemberRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -55,5 +57,11 @@ public class MemberServiceImpl implements MemberService{
         Optional<Member> optionalMember = memberRepository.findByEmail(email);
         if(optionalMember.isPresent())
             throw new RuntimeException("email already exist"); // custom?
+    }
+
+    @Override
+    public Slice<Member> findAll(Pageable pageable){
+        Slice<Member> memberSlice = memberRepository.findSliceBy(pageable);
+        return memberSlice;
     }
 }

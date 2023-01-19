@@ -22,5 +22,11 @@ public class Member extends Auditable {
     private String email;
     @Column(nullable = false)
     private String password;
+    @Column
+    private Status status=Status.ACTIVE;
 
+    public enum Status{
+        ACTIVE,
+        DELETED
+    }
 }
