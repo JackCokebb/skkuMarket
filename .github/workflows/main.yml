@@ -35,4 +35,5 @@ jobs:
         SLACK_USERNAME: github skkuMarket build notif
         SLACK_COLOR: ${{ job.status }}
         SLACK_FOOTER: 'this is test'
+      if: always()
     
