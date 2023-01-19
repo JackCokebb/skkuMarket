@@ -11,7 +11,7 @@ on:
 jobs:
   push-test: #test when pushed
     name: push Gradle build and test
-    runs-on: ubuntu-18.04 #set OS
+    runs-on: ubuntu-latest #set OS
     steps:
     - name: Gradle Build Action #ref from marketplace -> gradle build action
       uses: gradle/gradle-build-action@v2.3.3
