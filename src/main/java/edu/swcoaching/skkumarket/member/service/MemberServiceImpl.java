@@ -39,7 +39,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public void deleteMember(long memberId) {
+    public void deleteMember(long memberId) { //TODO: POST로 states를 수정하는걸로
         Member findMember = findVerifiedMember(memberId);
         memberRepository.delete(findMember);
     }

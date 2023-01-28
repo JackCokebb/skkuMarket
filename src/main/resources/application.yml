@@ -1,3 +1,7 @@
 spring:
   profiles:
     active: "local"
+jwt:
+  header: Authorization
+  secret: amFja2Nva2ViYiBpcyB0aGUgYmVzdCBhbmQgaXMgc3VwZXIgY29vbCBhcyB5b3UgY2FuIHNlZQo=
+  token-validity-in-seconds: 86400

@@ -8,7 +8,6 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @Getter
-@Setter
 @Entity
 public class Member extends Auditable {
     @Id
