@@ -1,6 +1,7 @@
 package edu.swcoaching.skkumarket.jwt.config;
 
 import edu.swcoaching.skkumarket.jwt.JwtTokenProvider;
+import edu.swcoaching.skkumarket.jwt.filter.JwtFilter;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.DefaultSecurityFilterChain;

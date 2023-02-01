@@ -10,6 +10,7 @@ public interface MemberService {
     Member findMemberById(long memberId);
     void deleteMember(long memberId);
     Member findVerifiedMember(long memberId);
+    Member findMemberByEmail(String email);
     void verifyExistEmail(String email);
     Slice findAll(Pageable pageable);
 

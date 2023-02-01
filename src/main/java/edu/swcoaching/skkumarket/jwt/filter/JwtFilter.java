@@ -6,12 +6,15 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.GenericFilterBean;
 
 import java.io.IOException;
 
+@Slf4j
 public class JwtFilter extends GenericFilterBean {
     private static final String AUTHORIZATION_HEADER = "Authorization";
     private JwtTokenProvider jwtTokenProvider;
@@ -27,8 +30,14 @@ public class JwtFilter extends GenericFilterBean {
         String requestURI = httpServletRequest.getRequestURI();
 
         if(StringUtils.hasText(jwt) && jwtTokenProvider.validateToken(jwt)){
-            Authentication authentication = jwtTokenProvider.getA
+            Authentication authentication = jwtTokenProvider.getAuthentication(jwt);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            log.info("Token saved in the security context, info: {}", authentication.getName());
         }
+        else {
+            log.error("Not a Valid Token");
+        }
+        chain.doFilter(request, response);
     }
 
     private String resolveToken(HttpServletRequest request){

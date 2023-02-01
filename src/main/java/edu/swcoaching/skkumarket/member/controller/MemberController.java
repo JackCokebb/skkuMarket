@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @Validated
 @RestController
-@RequestMapping("/members")
+@RequestMapping("/api/v1/members")
 public class MemberController {
     private final MemberService memberService;
     private final MemberMapper memberMapper;
