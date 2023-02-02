@@ -36,4 +36,10 @@ jobs:
         SLACK_COLOR: ${{ job.status }}
         SLACK_FOOTER: 'this is test'
       if: always()
+    - name: Heroku deploy
+      uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "skku-app-test-2023"
+        heroku_email: "sbcoba@gmail.com"
     
