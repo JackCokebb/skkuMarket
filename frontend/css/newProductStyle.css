@@ -1,0 +1,111 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  max-width: 99%;
+}
+#mainContents {
+  width: 70%;
+  height: 100%;
+  justify-content: center;
+}
+
+header {
+  width: auto;
+  font-family: "Montserrat", sans-serif;
+  align-self: stretch;
+}
+#title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0b471b;
+}
+svg {
+  color: #0b471b;
+  padding-bottom: 1px;
+}
+#headerBtn-login,
+#headerBtn-logout {
+  display: flex;
+  flex-direction: row;
+}
+#headerBtn-logout {
+  display: none;
+}
+
+#headerBtn-login a,
+#headerBtn-logout a {
+  text-decoration: none;
+}
+#headerBtn-login a:link,
+#headerBtn-logout a:link {
+  color: #0b471b;
+}
+#headerBtn-login a:visited,
+#headerBtn-logout a:visited {
+  color: #0b471b;
+}
+#headerBtn-login a:hover,
+#headerBtn-logout a:hover {
+  color: #0b471b;
+}
+#headerBtn-login a:active,
+#headerBtn-logout a:active {
+  color: #0b471b;
+}
+#userInfo,
+#login {
+  margin-right: 1.5rem;
+}
+
+#mainTitle {
+  margin-bottom: 3rem;
+  border-bottom: solid 1px #d4d4d4;
+}
+
+.mb-3 .form-label {
+  margin-left: 3px;
+}
+#fileInputBox,
+#postTitleBox,
+#priceBox,
+#postContentBox {
+  border-bottom: solid 1px #d4d4d4;
+  padding: 0px 1.25rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+}
+
+#fileInputBox input {
+  margin-bottom: 1rem;
+}
+
+#priceBox input {
+  border: none;
+}
+#postTitleBox input {
+  border: none;
+}
+#postContentBox textarea {
+  border: none;
+  resize: none;
+  height: 16.25em;
+}
+.btn {
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+  color: #0b471b;
+}
+
+#title {
+  text-decoration-line: none;
+}
+
+.footer {
+  border-top: 1px solid lightgray;
+  padding: 30px;
+  margin-top: 8%;
+  text-align: center;
+}

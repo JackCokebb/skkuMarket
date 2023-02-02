@@ -18,18 +18,18 @@ public class AuthService {
     private final JwtTokenProvider jwtTokenProvider;
 
     public Member signUp(SignUpDto memberInfo){
-        memberService.verifyExistEmail(memberInfo.getEmail());
-        Member member = Member.builder()
-                .email(memberInfo.getEmail())
-                .nickname(memberInfo.getNickname())
-                .password(memberInfo.getPassword())
+        memberService.verifyExistEmail(memberInfo.email());
+        Member member = Member.builder()  // builder 패턴 문제가 있음, builder 패턴은 필수 값이 누락될 수 있음, side pattern이 생길 수 있음 -> of 메소드(static)나 생성자로 바꾸기 -> 필수 파라미터 강제 가능
+                .email(memberInfo.email()) // builder 패턴는 필드가 많은 경우 추적이 불가 -> ex) 멤버 객체가 어디서 생성되는지 찾기 힘듬
+                .nickname(memberInfo.nickname()) // private(accessLevel을 private)으로 entity 안에서 생성자나 of 메소드 안에서만 사용
+                .password(memberInfo.password())
                 .build();
         Member createdMember = memberService.createMember(member);
         return createdMember;
     }
 
     public AuthDto login(LoginDto loginInfo){
-        Member targetMember = memberService.findMemberByEmail(loginInfo.getUsername());
+        Member targetMember = memberService.findMemberByEmail(loginInfo.getUsername()); // TODO: null 주의
         if(!passwordEncoder.encode(loginInfo.getPassword()).equals(loginInfo.getPassword())){
             throw  new RuntimeException("Password Not Valid");
         }

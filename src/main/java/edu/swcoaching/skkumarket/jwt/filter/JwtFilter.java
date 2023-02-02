@@ -29,13 +29,16 @@ public class JwtFilter extends GenericFilterBean {
         String jwt = resolveToken(httpServletRequest);
         String requestURI = httpServletRequest.getRequestURI();
 
-        if(StringUtils.hasText(jwt) && jwtTokenProvider.validateToken(jwt)){
+        if(StringUtils.hasText(jwt) && jwtTokenProvider.validateToken(jwt)){ // 한 세트로 처리 -> validateToken 안에서 예외 뱉게끔 하고 예외 처리는 spring security 예외
+            // 로그인 한사람이면 access denied 403
+            // 로그인 안한 사람이면 unAuthorized 401
             Authentication authentication = jwtTokenProvider.getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             log.info("Token saved in the security context, info: {}", authentication.getName());
         }
         else {
             log.error("Not a Valid Token");
+            //TODO: 예외 구분해서 뱉도록. wrapping해서 처리 -> wrapping해야 추적이 쉬움.
         }
         chain.doFilter(request, response);
     }

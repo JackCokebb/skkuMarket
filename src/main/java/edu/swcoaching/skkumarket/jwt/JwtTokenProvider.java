@@ -30,7 +30,7 @@ public class JwtTokenProvider {
     private final long tokenValidityInMilliseconds;
     private final MemberDetailService memberDetailService;
 
-    public JwtTokenProvider(@Value("${jwt.secret}") String secretKey,
+    public JwtTokenProvider(@Value("${jwt.secret}") String secretKey, //secret key는 배포할때 속성으로 넣어주거나 배포하는 서버의 환경변수로,, 외부에 노출되지 않도록,,
                             @Value("${jwt.token-validity-in-seconds}") long tokenValidityInMilliseconds,
                             MemberDetailService memberDetailService){
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);

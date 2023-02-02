@@ -12,6 +12,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,22 +22,24 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class AuthController {
     private final AuthService authService;
-    private final MemberService memberService;
     private final MemberMapper memberMapper;
 
-    public ResponseEntity signUp(@RequestBody SignUpDto requestBody){
+    @PostMapping("/signUp")
+    public ResponseEntity<SingleResponseDto<?>> signUp(@RequestBody SignUpDto requestBody){ //코드가 길다고 나쁜게 아님
         Member member = authService.signUp(requestBody);
         return new ResponseEntity<>(
                 new SingleResponseDto<>(true, memberMapper.memberToMemberResponse(member)),
                 HttpStatus.CREATED);
     }
 
-    public ResponseEntity login(@RequestBody @Valid LoginDto requestBody){
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody @Valid LoginDto requestBody){
         AuthDto responseBody =  authService.login(requestBody);
         return new ResponseEntity<>(
                 new SingleResponseDto<>(true, responseBody),
                 HttpStatus.OK
         );
     }
-    //TODO: refresh token
+    // TODO: refresh token
+    // 주석과 필요없는 코드는 바로바로 치우자
 }

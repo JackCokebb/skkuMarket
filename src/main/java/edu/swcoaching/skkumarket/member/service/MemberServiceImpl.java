@@ -43,7 +43,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public void deleteMember(long memberId) { //TODO: POST로 states를 수정하는걸로
+    public void deleteMember(long memberId) { // TODO: POST로 states를 수정하는걸로
         Member findMember = findVerifiedMember(memberId);
         memberRepository.delete(findMember);
     }
@@ -52,7 +52,7 @@ public class MemberServiceImpl implements MemberService{
     public Member findVerifiedMember(long memberId) {
         Optional<Member> optionalMember = memberRepository.findById(memberId);
         Member findMember =
-                optionalMember.orElseThrow(()-> new RuntimeException("member not found")); // custom?
+                optionalMember.orElseThrow(()-> new RuntimeException("member not found")); // custom? -> authentication exception
         return findMember;
     }
 

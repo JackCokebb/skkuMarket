@@ -1,13 +1,18 @@
 package edu.swcoaching.skkumarket.member.entity;
 
 import edu.swcoaching.skkumarket.audit.Auditable;
+import edu.swcoaching.skkumarket.post.entity.Post;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Builder
+//@Builder(access = AccessLevel.PRIVATE)
 @Entity
 public class Member extends Auditable {
     @Id
@@ -23,11 +28,20 @@ public class Member extends Auditable {
     private String password;
     @Column
     private Status status=Status.ACTIVE;
+    @Column
     private Authority authority=Authority.ROLE_USER;
+    @OneToMany(mappedBy = "member")
+    private List<Post> posts = new ArrayList<>();
+    public void addPost(Post post) {
+        this.posts.add(post);
+        if (post.getMember() != this) {
+            post.addMember(this);
+        }
+    }
 
     public enum Status{
         ACTIVE,
-        DELETED
+        DELETED //soft delete -> JPAㅇㅔ서 지원하는 방식도 있음
     }
 
     public enum Authority{
