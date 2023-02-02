@@ -10,6 +10,13 @@ public interface MemberService {
     Member findMemberById(long memberId);
     void deleteMember(long memberId);
     Member findVerifiedMember(long memberId);
+
+    /**
+     * email로 회원을 조회한다.
+     * @param email 이메일
+     * @return 회원 객체
+     */
+    Member findMemberByEmail(String email);
     void verifyExistEmail(String email);
     Slice findAll(Pageable pageable);
 

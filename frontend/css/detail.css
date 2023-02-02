@@ -1,0 +1,161 @@
+.container {
+  margin: 5px;
+  max-width: 99%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header {
+  width: auto;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 1px;
+  align-self: stretch;
+}
+#title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0b471b;
+  text-decoration: none;
+}
+#headerBtn a {
+  text-decoration: none;
+}
+#headerBtn a:link {
+  color: #0b471b;
+}
+#headerBtn a:visited {
+  color: #0b471b;
+}
+#headerBtn a:hover {
+  color: #0b471b;
+}
+#headerBtn a:active {
+  color: #0b471b;
+}
+
+svg {
+  color: #0b471b;
+  padding-bottom: 1px;
+} 
+#headerBtn-login,
+#headerBtn-logout {
+  display: flex;
+  flex-direction: row;
+}
+#headerBtn-logout {
+  display: none;
+}
+
+#headerBtn-login a,
+#headerBtn-logout a {
+  text-decoration: none;
+}
+#headerBtn-login a:link,
+#headerBtn-logout a:link {
+  color: #0b471b;
+}
+#headerBtn-login a:visited,
+#headerBtn-logout a:visited {
+  color: #0b471b;
+}
+#headerBtn-login a:hover,
+#headerBtn-logout a:hover {
+  color: #0b471b;
+}
+#headerBtn-login a:active,
+#headerBtn-logout a:active {
+  color: #0b471b;
+}
+#userInfo,
+#login {
+  margin-right: 1.5rem;
+}
+
+
+#reply_btn {
+  color: #0b471b;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 10px;
+  margin-left: 92%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  /* text-align: center; */
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: column; */
+}
+
+.contents {
+  margin-top: 5%;
+  width: 60%;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.author {
+  padding: 5px;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.content {
+  padding: 5px;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.title,
+.comments {
+  padding: 5px;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top: 1px solid lightgray;
+}
+
+.price {
+  font-weight: 550;
+  font-size: 18px;
+  padding: 5px;
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top: 1px solid lightgray;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 30px;
+}
+
+.footer {
+  border-top: 1px solid lightgray;
+  padding: 30px;
+  text-align: center;
+}
+
+.com_userInfo {
+  font-size: 18px;
+}
+
+.form-control {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+li {
+  margin-left: -3%;
+  list-style: none;
+}

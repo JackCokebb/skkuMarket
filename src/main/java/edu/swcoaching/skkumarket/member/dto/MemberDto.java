@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-public class MemberDto {
+public class MemberDto { // inner class 별로 -> 별개로 만드는게 나을수도
     @AllArgsConstructor
     @Getter
     public static class Post{

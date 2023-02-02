@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,9 +16,12 @@ import java.util.Optional;
 @Transactional
 public class MemberServiceImpl implements MemberService{
     private final MemberRepository memberRepository;
+    private final PasswordEncoder passwordEncoder;
     @Override
     public Member createMember(Member member) {
         verifyExistEmail(member.getEmail());
+        String encryptedPassword = passwordEncoder.encode(member.getPassword());
+        member.updatePassword(encryptedPassword);
         Member savedMember = memberRepository.save(member);
         return savedMember;
     }
@@ -25,10 +29,10 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Member updateMember(Member member) {
         Member findMember = findVerifiedMember(member.getId());
-        Optional.ofNullable(member.getUsername())
-                .ifPresent(newUsername -> findMember.setUsername(newUsername));
+        Optional.ofNullable(member.getNickname())
+                .ifPresent(newUsername -> findMember.updateNickname(newUsername));
         Optional.ofNullable(member.getPassword())
-                .ifPresent(newPassword -> findMember.setPassword(newPassword));
+                .ifPresent(newPassword -> findMember.updatePassword(passwordEncoder.encode(newPassword)));
 
         return memberRepository.save(findMember);
     }
@@ -39,7 +43,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public void deleteMember(long memberId) {
+    public void deleteMember(long memberId) { // TODO: POST로 states를 수정하는걸로
         Member findMember = findVerifiedMember(memberId);
         memberRepository.delete(findMember);
     }
@@ -48,7 +52,14 @@ public class MemberServiceImpl implements MemberService{
     public Member findVerifiedMember(long memberId) {
         Optional<Member> optionalMember = memberRepository.findById(memberId);
         Member findMember =
-                optionalMember.orElseThrow(()-> new RuntimeException("member not found")); // custom?
+                optionalMember.orElseThrow(()-> new RuntimeException("member not found")); // custom? -> authentication exception
+        return findMember;
+    }
+
+    public Member findMemberByEmail(String email){
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+        Member findMember =
+                optionalMember.orElseThrow(() -> new RuntimeException("No such member with email " + email));
         return findMember;
     }
 

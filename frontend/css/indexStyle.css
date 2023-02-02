@@ -1,0 +1,114 @@
+.container {
+  margin: 5px;
+  max-width: 99%;
+}
+svg {
+  color: #0b471b;
+  padding-bottom: 1px;
+}
+header {
+  width: auto;
+  font-family: "Montserrat", sans-serif;
+}
+#title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0b471b;
+}
+
+#headerBtn-login,
+#headerBtn-logout {
+  display: flex;
+  flex-direction: row;
+}
+#headerBtn-logout {
+  display: none;
+}
+
+#headerBtn-login a,
+#headerBtn-logout a {
+  text-decoration: none;
+}
+#headerBtn-login a:link,
+#headerBtn-logout a:link {
+  color: #0b471b;
+}
+#headerBtn-login a:visited,
+#headerBtn-logout a:visited {
+  color: #0b471b;
+}
+#headerBtn-login a:hover,
+#headerBtn-logout a:hover {
+  color: #0b471b;
+}
+#headerBtn-login a:active,
+#headerBtn-logout a:active {
+  color: #0b471b;
+}
+#userInfo,
+#login {
+  margin-right: 1.5rem;
+}
+
+#mainTitle {
+  margin-bottom: 3rem;
+}
+
+#newPostDiv {
+  width: 90%;
+  justify-content: flex-end;
+}
+
+#addNewPost {
+  font-size: 20px;
+  color: white;
+  background-color: #0b471b;
+  border: none;
+  border-radius: 8.75px;
+  padding: 5px 10px;
+}
+
+.productList {
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  grid-template-rows: auto;
+  grid-gap: 4rem;
+  margin: 3em;
+  align-content: center;
+  justify-content: center;
+}
+
+.productCard {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.productImgBox {
+  width: 200px;
+  height: 200px;
+
+  border: 1px solid rgb(216, 211, 211);
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+#productListPlaceHolder {
+  color: rgb(212, 212, 212);
+  margin: auto;
+}
+
+#title {
+  text-decoration-line: none;
+}
+
+.footer {
+  border-top: 1px solid lightgray;
+  padding: 30px;
+}
+#mainContents {
+  text-align: center;
+}

@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -21,6 +22,8 @@ public class QMember extends EntityPathBase<Member> {
 
     public final edu.swcoaching.skkumarket.audit.QAuditable _super = new edu.swcoaching.skkumarket.audit.QAuditable(this);
 
+    public final EnumPath<Member.Authority> authority = createEnum("authority", Member.Authority.class);
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
 
@@ -31,11 +34,13 @@ public class QMember extends EntityPathBase<Member> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedAt = _super.modifiedAt;
 
+    public final StringPath nickname = createString("nickname");
+
     public final StringPath password = createString("password");
 
-    public final EnumPath<Member.Status> status = createEnum("status", Member.Status.class);
+    public final ListPath<edu.swcoaching.skkumarket.post.entity.Post, edu.swcoaching.skkumarket.post.entity.QPost> posts = this.<edu.swcoaching.skkumarket.post.entity.Post, edu.swcoaching.skkumarket.post.entity.QPost>createList("posts", edu.swcoaching.skkumarket.post.entity.Post.class, edu.swcoaching.skkumarket.post.entity.QPost.class, PathInits.DIRECT2);
 
-    public final StringPath username = createString("username");
+    public final EnumPath<Member.Status> status = createEnum("status", Member.Status.class);
 
     public QMember(String variable) {
         super(Member.class, forVariable(variable));
