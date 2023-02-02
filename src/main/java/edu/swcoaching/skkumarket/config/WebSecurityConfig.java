@@ -4,6 +4,7 @@ import edu.swcoaching.skkumarket.jwt.JwtTokenProvider;
 import edu.swcoaching.skkumarket.jwt.config.JwtSecurityConfig;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -25,13 +26,14 @@ import java.util.Arrays;
 @EnableWebSecurity
 @EnableMethodSecurity
 @Configuration
-@AllArgsConstructor
 public class WebSecurityConfig{
     private final JwtTokenProvider jwtTokenProvider;
-    //private final CorsFilter corsFilter;
+    private final CorsFilter corsFilter = new CorsFilter(corsConfigurationSource());
     //private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     //private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
-
+    public WebSecurityConfig(JwtTokenProvider jwtTokenProvider){
+        this.jwtTokenProvider = jwtTokenProvider;
+    }
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
