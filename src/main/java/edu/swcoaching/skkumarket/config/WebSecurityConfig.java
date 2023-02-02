@@ -3,6 +3,7 @@ package edu.swcoaching.skkumarket.config;
 import edu.swcoaching.skkumarket.jwt.JwtTokenProvider;
 import edu.swcoaching.skkumarket.jwt.config.JwtSecurityConfig;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -27,7 +28,7 @@ import java.util.Arrays;
 @AllArgsConstructor
 public class WebSecurityConfig{
     private final JwtTokenProvider jwtTokenProvider;
-    private final CorsFilter corsFilter;
+    //private final CorsFilter corsFilter;
     //private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     //private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
@@ -40,7 +41,7 @@ public class WebSecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
                 .csrf().disable()
-                .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
+                //.addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
 
                 .exceptionHandling()
                 //.authenticationEntryPoint(jwtAuthenticationEntryPoint)
