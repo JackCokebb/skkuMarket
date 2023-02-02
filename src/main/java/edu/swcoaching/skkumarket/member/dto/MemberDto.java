@@ -38,7 +38,7 @@ public class MemberDto { // inner class 별로 -> 별개로 만드는게 나을�
     @AllArgsConstructor
     public static class Response{
         private long id;
-        private String username;
+        private String nickname;
         private String email;
         private Member.Status status;
 

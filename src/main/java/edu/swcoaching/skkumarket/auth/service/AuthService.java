@@ -23,6 +23,8 @@ public class AuthService {
                 .email(memberInfo.email()) // builder 패턴는 필드가 많은 경우 추적이 불가 -> ex) 멤버 객체가 어디서 생성되는지 찾기 힘듬
                 .nickname(memberInfo.nickname()) // private(accessLevel을 private)으로 entity 안에서 생성자나 of 메소드 안에서만 사용
                 .password(memberInfo.password())
+                .authority(Member.Authority.ROLE_USER)
+                .status(Member.Status.ACTIVE)
                 .build();
         Member createdMember = memberService.createMember(member);
         return createdMember;
