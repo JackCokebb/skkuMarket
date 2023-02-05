@@ -1,4 +1,4 @@
-package edu.swcoaching.skkumarket.member.dto;
+package edu.swcoaching.skkumarket.global.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

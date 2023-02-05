@@ -31,10 +31,10 @@ public class AuthService {
     }
 
     public AuthDto login(LoginDto loginInfo){
-        Member targetMember = memberService.findMemberByEmail(loginInfo.getUsername()); // TODO: null 주의
-        if(!passwordEncoder.encode(loginInfo.getPassword()).equals(loginInfo.getPassword())){
+        if(isPasswordValid(loginInfo.getUsername(), loginInfo.getPassword())){
             throw  new RuntimeException("Password Not Valid");
         }
+        Member targetMember = memberService.findMemberByEmail(loginInfo.getUsername());
         String accessToken = jwtTokenProvider.createToken(targetMember);
         return AuthDto.builder()
                 .accessToken(accessToken)

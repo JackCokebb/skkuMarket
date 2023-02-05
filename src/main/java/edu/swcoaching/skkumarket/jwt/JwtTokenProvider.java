@@ -33,7 +33,7 @@ public class JwtTokenProvider {
     public JwtTokenProvider(@Value("${jwt.secret}") String secretKey, //secret key는 배포할때 속성으로 넣어주거나 배포하는 서버의 환경변수로,, 외부에 노출되지 않도록,,
                             @Value("${jwt.token-validity-in-seconds}") long tokenValidityInMilliseconds,
                             MemberDetailService memberDetailService){
-        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey.repeat(32));
         this.key = Keys.hmacShaKeyFor(keyBytes);
         this.tokenValidityInMilliseconds = tokenValidityInMilliseconds;
         this.memberDetailService = memberDetailService;
@@ -91,6 +91,7 @@ public class JwtTokenProvider {
     public boolean validateToken(String token){
         try{
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            log.debug("# expiry date: {}", Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody().getExpiration());
             return true;
         }catch(io.jsonwebtoken.security.SignatureException | MalformedJwtException e){
             log.info("Wrong Jwt Signiture");

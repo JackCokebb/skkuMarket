@@ -1,5 +1,6 @@
 package edu.swcoaching.skkumarket.member.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import edu.swcoaching.skkumarket.audit.Auditable;
 import edu.swcoaching.skkumarket.post.entity.Post;
 import jakarta.persistence.*;
@@ -30,6 +31,7 @@ public class Member extends Auditable {
     private Status status=Status.ACTIVE;
     @Column
     private Authority authority=Authority.ROLE_USER;
+    @JsonManagedReference
     @OneToMany(mappedBy = "member")
     private List<Post> posts = new ArrayList<>();
     public void addPost(Post post) {

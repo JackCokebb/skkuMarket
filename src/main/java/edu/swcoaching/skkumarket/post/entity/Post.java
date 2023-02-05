@@ -1,5 +1,6 @@
 package edu.swcoaching.skkumarket.post.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import edu.swcoaching.skkumarket.audit.Auditable;
 import edu.swcoaching.skkumarket.member.entity.Member;
 import jakarta.persistence.*;
@@ -27,6 +28,7 @@ public class Post extends Auditable {
     private String description;
     @Column(nullable = false)
     private Status status=Status.ACTIVE;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
@@ -35,6 +37,19 @@ public class Post extends Auditable {
         if (!this.member.getPosts().contains(this)) {
             this.member.getPosts().add(this);
         }
+    }
+
+    public Post(String title,
+                String image,
+                int price,
+                String description,
+                Post.Status status
+                ){
+        this.title = title;
+        this.image = image;
+        this.price = price;
+        this.description = description;
+        this.status = status;
     }
 
     public enum Status{

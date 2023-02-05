@@ -1,7 +1,7 @@
 package edu.swcoaching.skkumarket.member.controller;
 
 import edu.swcoaching.skkumarket.member.dto.MemberDto;
-import edu.swcoaching.skkumarket.member.dto.SingleResponseDto;
+import edu.swcoaching.skkumarket.global.dto.SingleResponseDto;
 import edu.swcoaching.skkumarket.member.entity.Member;
 import edu.swcoaching.skkumarket.member.mapper.MemberMapper;
 import edu.swcoaching.skkumarket.member.service.MemberService;
@@ -13,8 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @AllArgsConstructor
 @Validated
